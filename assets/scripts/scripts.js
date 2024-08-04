@@ -19,6 +19,7 @@ menu.addEventListener('click', function () {
     if(navMenu.style.display = "none") {
         navMenu.style.display = "flex"
         navMenu.classList.toggle("active")
+        menu.classList.toggle("active")
     } else {
          navMenu.style.display = "none"
     }

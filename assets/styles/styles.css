@@ -145,14 +145,15 @@ h6 {
 
   .header {
     display: flex;
+    width: 100%;
     padding: 5px 15px;
     justify-content: space-between;
     align-items: center;
     margin: auto;
     position: fixed;
-    top: 1px;
+    top: 0;
     z-index: 5;
-    border-radius: 40px;
+    border-radius: 0 0 20px 20px;
   }
 
   .header.active {
@@ -200,9 +201,14 @@ h6 {
 
   .nav-li-a {
     height: 100%;
-    padding: 40px;
+    padding: 50px 40px;
     font-size: 1.7rem;
     color: var(--color-primary);
+
+  }
+
+  .nav-li-a:hover {
+   background: crimson;
 
   }
 
@@ -237,7 +243,7 @@ h6 {
     transition: var(--transition-1);
   }
   
-  .status-indicator.night {
+  .status-indicator.day {
     left: 20px;
     box-shadow: inset 20px -20px var(--gold);
     border: 1px solid var(--color-primary);
@@ -256,8 +262,12 @@ h6 {
     background: var(--bg-secondary);
     border-radius: 10px;
 
+     transition: var(--transition-1);
 
+     
   }
+
+
 
 
   .first, .second, .third {
@@ -295,7 +305,7 @@ h6 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 90vh;
+    min-height: 98vh;
     width: 90vw;
     position: relative;
     margin: auto;
@@ -318,7 +328,7 @@ h6 {
 
 
 
-.whoami {
+.whoami-desktop {
 margin: auto;
     width: 60vw;
     text-align: center;
@@ -328,6 +338,13 @@ margin: auto;
     padding: 0 0 0 10px;
     color: var(--scarlet);
 }
+
+.whoami-mobile {
+    display: none;
+    
+
+}
+
 
 
 /* About */
@@ -422,6 +439,9 @@ color: var(--color-primary);
 .skills {
     background: var(--bg-primary);
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .skill-article {
@@ -480,6 +500,9 @@ color: var(--color-primary);
 .projects {
     min-height: 100vh;
     background: var(--bg-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -524,15 +547,19 @@ color: var(--color-primary);
 /* Media Query */
 
 @media (max-width:1024px) {
+    html {
+        min-height: 100vh;
+    }
     body {
        display: flex;
        flex-direction: column;
        align-items: center;
        position: relative;
-
+        min-height: 100vh;
        font-family: "Poppins", sans-serif;
        font-weight: 400;
        font-style: normal;
+       z-index: 1;
 
     }
 
@@ -544,15 +571,19 @@ color: var(--color-primary);
         place-items: center;
         width: 100%;
         position: fixed;
-        top: 1px;
+        top: 0;
+       padding-block: 30px;
     }
+
+
+    .header.active { padding-block: 15px; }
 
     .nav {
         display: flex;
         justify-content: center;
         align-items: center;
         position: absolute;
-        top: -180%;
+        top: -200%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 70vw;
@@ -565,16 +596,18 @@ color: var(--color-primary);
         display: flex;
         justify-content: center;
         align-items: center;
-    z-index: 8;
-        width: 40vw;
+    z-index: 5;
+    height: 90vh;
+        width: 100vw;
         background-color: var(--bg-secondary);
         margin: 0;
         position: absolute;
-        top: 180%;
+        top: 60vh;
         left: 50%;
         -ms-transform: translate(-50%, -50%);
         transform: translate(-50%, -50%);
-    
+
+
 
     }
 
@@ -587,9 +620,21 @@ color: var(--color-primary);
     .nav-li-a:hover {
         padding: 40px 60px;
         width: 100%;
-        background: var(--message-btn);
-        color: var(--color-secondary);
+        
+        color: var(--color-primary);
     }
+
+   .header.active .nav-li-a:hover {
+    padding: 6% 100vw ;
+        background-color: crimson ;
+
+    }
+
+    .header.active .nav-li-a:hover {
+        width: 100vw;
+            background-color: crimson ;
+    
+        }
 
     .app-logo-container {
         grid-column: 2 / 3;
@@ -599,10 +644,16 @@ color: var(--color-primary);
     
     }
     .app-name {
-
+        
         font-size: 3.5vw;
         width: 30vw;
     }
+
+
+    .logo {
+        font-size: 9vw;
+    }
+
     .theme-options {
         grid-column: 3 / 4;
         grid-row: 1 / 2;
@@ -619,7 +670,60 @@ color: var(--color-primary);
 
     .menu-btn {
         display: flex;
-        background: var(--bg-secondary);
+        background: var(--bg-primary);
+        border: none;
+    }
+
+    .menu-btn.active { transform: rotate(-55deg); 
+
+    border: none;
+        width: 50px;
+        position: relative;
+    }
+
+  .header.active .menu-btn.active { 
+    background: var(--bg-secondary);
+        }
+
+    .menu-btn.active .first { 
+        transform: rotate(-85deg);   
+       position: absolute;
+        width: 40px; }
+
+
+.menu-btn.active .third { 
+    transform: rotate(10deg);
+    width: 40px;
+   
+}
+
+.menu-btn.active .second {
+    display: none;
+}
+
+    .whoami-desktop {
+       display: none;
+      
+    }
+
+        .whoami-mobile {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        font-size: 2rem;
+        position: relative;
+      
+    }
+
+    .hero-text-mobile {
+        color: crimson;
+       
+    }
+
+    .main {
+        position: relative;
+        z-index: 2;
     }
 
     .about {
@@ -627,7 +731,14 @@ color: var(--color-primary);
         flex-direction: column;
         padding: 80px 0;
         min-height: 100vh;
+        background: var(--bg-secondary);
+        
     }
+
+    .avatar-img {
+    height: 450px;
+}
+
 
     /* .about-me-container {
         display: flex;
@@ -639,6 +750,8 @@ color: var(--color-primary);
         flex-direction: column;
         padding: 0 10px;
         width: 100vw;
+        justify-content: center;
+        align-items: center;
     }
 
     .card-container {
@@ -646,16 +759,29 @@ color: var(--color-primary);
         display: flex;
         align-items: center;
         justify-content: center;
+        
     }
 
     .card {
-        width: 100vw;
+        width: 100%;
         border-radius: 0;
-        border: none;
+        border: 1px solid black;
         display: flex;
         justify-content: center;
         align-items: center;
+        text-align: center;
+        box-shadow: none;
+        margin: auto;
+     
     }
+
+    .resume-card {
+        width: 100vw;
+        margin: 20px 0;
+    }
+
+
+
 
 
     .skills {
