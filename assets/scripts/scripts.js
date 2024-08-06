@@ -58,12 +58,27 @@ themeSwitch.addEventListener("click", function() {
         document.body.classList.remove("dark-theme")
         themeSwitch.classList.add("day")
         themeSwitch.classList.remove("night")
+        localStorage.setItem("theme", "light-mode");
     } else {
         document.body.classList.add("dark-theme")
         document.body.classList.remove("light-theme")
         themeSwitch.classList.add("night")
         themeSwitch.classList.remove("day")
+        localStorage.setItem("theme", "dark-mode");
     }
 })
 
 
+if (localStorage.getItem("theme") === "light-mode") {
+    themeSwitch.classList.add("day")
+    themeSwitch.classList.remove("night")
+    document.body.classList.add("light-theme")
+    document.body.classList.remove("dark-theme")
+  } else {
+    themeSwitch.classList.add("night")
+    themeSwitch.classList.remove("day")
+    document.body.classList.add("dark-theme")
+    document.body.classList.remove("light-theme")
+  }
+  
+  
